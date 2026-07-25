@@ -43,6 +43,9 @@ usando il modulo PowerShell `Posh-SSH` invece di WinSCP/PuTTY manuali.
 ## Uso
 
 ```powershell
+# 0) Non sai in che stato è il modem? Controllalo prima (non tocca nulla):
+.\Root-DGA4130.ps1 -DiagnoseOnly
+
 # 1) Segui a mano i prerequisiti manuali (vedi sopra e commento in testa allo script)
 # 2) Lancia lo script passando i due file scaricati:
 .\Root-DGA4130.ps1 -FirmwarePath "C:\percorso\firmware_tipo2.bin" -GuiTarPath "C:\percorso\GUI.tar.bz2"
@@ -56,6 +59,29 @@ procedere, poi esegue in sequenza le 5 fasi mostrando l'output di ogni
 comando remoto. Se qualcosa fallisce a metà, **non staccare l'alimentazione
 del modem**: lo script stampa dove si è fermato e rimanda al thread
 originale per il recovery manuale.
+
+## Troubleshooting: il modem non risponde dopo un crash
+
+Se il modem era già rootato (root/root attivo su :22) e ha smesso di
+rispondere in seguito a un crash (es. durante l'installazione di un modulo
+kernel), `-DiagnoseOnly` controlla ping + porte 22/80/443 + TFTP 69/udp e dà
+un verdetto. In particolare:
+
+- **Solo ping risponde, nessuna porta aperta** (nemmeno TFTP): il modem è
+  bloccato sotto il livello dei servizi (probabile crash del kernel/flow
+  accelerator hardware BCM63xx, o boot bloccato prima che parta lo
+  userspace). **AutoFlashGUI non funzionerà in questo stato** — si
+  autentica sull'interfaccia web (porta 80), che qui non è su. Serve un
+  intervento fisico: tieni premuto il tasto reset posteriore per 8 secondi
+  (come nel prerequisito manuale) per forzare la modalità DDNS/bootp che
+  AutoFlashGUI si aspetta. Un LED "i"/power arancione **lampeggiante** che
+  resta così per più di qualche minuto conferma che il modem è fermo in
+  attesa e non si riprenderà da solo.
+- **Solo TFTP risponde**: il modem è nel bootloader CFE in attesa di
+  un'immagine via TFTP — percorso di recovery diverso da AutoFlashGUI, non
+  coperto da questo script.
+- **Porta 22 aperta**: root è già attivo, si può operare da SSH normalmente
+  (anche con lo script stesso, se serve rifare lo swap bank).
 
 ## Al termine
 

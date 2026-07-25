@@ -37,6 +37,18 @@
 .PARAMETER ModemIp
     IP del modem in modalita' di setup (default 192.168.1.1).
 
+.PARAMETER DiagnoseOnly
+    Non roota nulla: controlla solo se il modem e' raggiungibile (ping, porte
+    22/80/443, TFTP 69/udp) e stampa un verdetto su cosa provare. Utile per
+    capire in che stato e' il modem PRIMA di lanciare il resto - es. dopo un
+    crash, se risponde solo al ping e nessuna porta e' aperta, AutoFlashGUI
+    non funzionera' (si autentica sull'interfaccia web, serve la 80 su) e
+    serve un intervento fisico (tasto reset) prima di tutto il resto. Non
+    richiede FirmwarePath/GuiTarPath ne' Posh-SSH.
+
+.EXAMPLE
+    .\Root-DGA4130.ps1 -DiagnoseOnly
+
 .EXAMPLE
     .\Root-DGA4130.ps1 -FirmwarePath C:\fw\dga4130_type2.bin -GuiTarPath C:\fw\GUI.tar.bz2
 
@@ -50,12 +62,9 @@
 
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory = $true)]
-    [ValidateScript({ Test-Path $_ -PathType Leaf })]
-    [string]$FirmwarePath,
+    [switch]$DiagnoseOnly,
 
-    [Parameter(Mandatory = $true)]
-    [ValidateScript({ Test-Path $_ -PathType Leaf })]
+    [string]$FirmwarePath,
     [string]$GuiTarPath,
 
     [string]$ModemIp = "192.168.1.1",
@@ -67,6 +76,62 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+
+function Test-ModemReachability {
+    param([string]$Target)
+
+    Write-Host "=== Diagnostica raggiungibilita' $Target ===" -ForegroundColor Yellow
+
+    $pingOk = Test-Connection -ComputerName $Target -Count 2 -Quiet -ErrorAction SilentlyContinue
+    Write-Host ("Ping: {0}" -f $(if ($pingOk) { "OK" } else { "NESSUNA RISPOSTA" }))
+
+    $tcpPorts = @{ 22 = "SSH (root gia' attivo / recovery via script)"; 80 = "Web admin (serve ad AutoFlashGUI)"; 443 = "Web admin HTTPS" }
+    $openPorts = @()
+    foreach ($p in $tcpPorts.Keys) {
+        $t = Test-NetConnection -ComputerName $Target -Port $p -WarningAction SilentlyContinue
+        $open = $t.TcpTestSucceeded
+        Write-Host ("Porta {0} ({1}): {2}" -f $p, $tcpPorts[$p], $(if ($open) { "APERTA" } else { "chiusa" }))
+        if ($open) { $openPorts += $p }
+    }
+
+    $tftpOk = $false
+    try {
+        $udp = New-Object System.Net.Sockets.UdpClient
+        $udp.Client.ReceiveTimeout = 2000
+        $probe = [byte[]](0,1) + [System.Text.Encoding]::ASCII.GetBytes("probe") + [byte[]](0) + [System.Text.Encoding]::ASCII.GetBytes("octet") + [byte[]](0)
+        $udp.Connect($Target, 69)
+        $udp.Send($probe, $probe.Length) | Out-Null
+        $remoteEP = New-Object System.Net.IPEndPoint([System.Net.IPAddress]::Any, 0)
+        $udp.Receive([ref]$remoteEP) | Out-Null
+        $tftpOk = $true
+    } catch { $tftpOk = $false } finally { if ($udp) { $udp.Close() } }
+    Write-Host ("Porta 69/udp (TFTP, recovery bootloader CFE): {0}" -f $(if ($tftpOk) { "risponde" } else { "nessuna risposta" }))
+
+    Write-Host ""
+    if (22 -in $openPorts) {
+        Write-Host "VERDETTO: root gia' attivo, si puo' lanciare lo script normale (senza -DiagnoseOnly)." -ForegroundColor Green
+    } elseif (80 -in $openPorts -or 443 -in $openPorts) {
+        Write-Host "VERDETTO: interfaccia web raggiungibile, non ancora rootato -> segui i prerequisiti manuali (reset 8s + AutoFlashGUI) poi rilancia lo script." -ForegroundColor Green
+    } elseif ($tftpOk) {
+        Write-Host "VERDETTO: solo TFTP risponde -> il modem e' nel bootloader CFE in attesa di un'immagine via TFTP, non con AutoFlashGUI." -ForegroundColor Yellow
+    } elseif ($pingOk) {
+        Write-Host "VERDETTO: solo ping risponde, nessun servizio (ne' web ne' TFTP) -> AutoFlashGUI NON funzionera' cosi' (si autentica sulla 80). Probabile crash/blocco sotto il livello dei servizi. Prova: tieni premuto il tasto reset posteriore per 8 secondi (rientra nella modalita' DDNS/bootp attesa da AutoFlashGUI); se dopo il reset ancora nulla, valuta piu' cicli di power-cycle per l'eventuale fallback automatico tra bank, o recovery seriale/UART." -ForegroundColor Red
+    } else {
+        Write-Host "VERDETTO: il modem non risponde nemmeno al ping. Controlla alimentazione/cablaggio LAN prima di tutto il resto." -ForegroundColor Red
+    }
+}
+
+if ($DiagnoseOnly) {
+    Test-ModemReachability -Target $ModemIp
+    exit 0
+}
+
+if (-not $FirmwarePath -or -not (Test-Path $FirmwarePath -PathType Leaf)) {
+    throw "FirmwarePath mancante o non trovato. Passa -FirmwarePath, oppure usa -DiagnoseOnly per solo controllare lo stato del modem."
+}
+if (-not $GuiTarPath -or -not (Test-Path $GuiTarPath -PathType Leaf)) {
+    throw "GuiTarPath mancante o non trovato. Passa -GuiTarPath, oppure usa -DiagnoseOnly per solo controllare lo stato del modem."
+}
 
 function Write-Step {
     param([string]$Text)
