@@ -1,7 +1,7 @@
 # Root automatico DGA4130 (e simili)
 
 Automazione della guida pubblicata su fibra.click:
-https://forum.fibra.click/d/13118-root-dga-4130-e-simili/9
+https://forum.fibra.click/d/13118-root-dga-4130-e-simili
 
 Vale per Technicolor DGA4130 ("TIM Smart Modem Plus"), e con gli stessi
 accorgimenti della guida originale anche per DGA4132 e Fastgate (il Fastgate
