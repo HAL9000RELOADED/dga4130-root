@@ -2,7 +2,7 @@
 .SYNOPSIS
     Automatizza il root del modem Technicolor DGA4130 (TIM Smart Modem Plus,
     e simili: DGA4132, TG789 ecc.) seguendo la procedura pubblicata su:
-    https://forum.fibra.click/d/13118-root-dga-4130-e-simili/9
+    https://forum.fibra.click/d/13118-root-dga-4130-e-simili
 
 .DESCRIZIONE
     La guida originale richiede di usare AutoFlashGUI + WinSCP + PuTTY a mano.
