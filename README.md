@@ -92,7 +92,7 @@ un verdetto. In particolare:
 
 ## Riferimenti (dalla guida originale)
 
-- https://forum.fibra.click/d/13118-root-dga-4130-e-simili/9 (guida sorgente)
+- https://forum.fibra.click/d/13118-root-dga-4130-e-simili (guida sorgente)
 - https://www.ilpuntotecnico.com/forum/index.php/topic,78162.0.html
 - https://www.ilpuntotecnico.com/forum/index.php/topic,81461.0.html
 - https://hack-technicolor.readthedocs.io/en/stable/ (progetto Ansuel:
