@@ -47,12 +47,6 @@ file/media esposti in LAN che non servivano più al prodotto, mantenendo
 solo i servizi essenziali — riduzione della superficie d'attacco via
 rimozione feature, non patch mirate a CVE specifiche.
 
-## Nota su WireGuard
-
-Nessuna delle 5 immagini ufficiali analizzate include moduli o binari
-WireGuard: va aggiunto via cross-compilazione per il target ARM
-Cortex-A9/BCM63138, non è presente in nessuna versione stock TIM.
-
 ## Metodologia
 
 1. Decifratura di ogni `.rbi` con la catena documentata in
