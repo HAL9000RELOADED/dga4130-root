@@ -90,6 +90,16 @@ un verdetto. In particolare:
 - GUI Ansuel installata e attiva (`/etc/init.d/rootdevice force`).
 - Ricollega il cavo VDSL quando vuoi.
 
+## Analisi tecnica del firmware stock
+
+[`FIRMWARE-ANALYSIS.md`](FIRMWARE-ANALYSIS.md) spiega, con i file di
+configurazione reali estratti da un `.rbi` ufficiale decifrato (dropbear,
+inittab, nginx, firewall), *perché* ogni passaggio dello script serve
+davvero — inclusa la console seriale/UART (`askconsole` in `/etc/inittab`),
+che questo README non documentava esplicitamente pur essendo già abilitata
+dallo script: utile da sapere per un eventuale recovery via USB-TTL quando
+sia SSH che la GUI web non rispondono.
+
 ## Riferimenti (dalla guida originale)
 
 - https://forum.fibra.click/d/13118-root-dga-4130-e-simili (guida sorgente)
