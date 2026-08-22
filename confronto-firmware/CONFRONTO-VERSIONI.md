@@ -32,7 +32,7 @@ ciascun modello TIM/Technicolor incluso in `/etc/boards/`.
 - `dosprotect`, `mud`, `nqe`, `opticald`, `wifi-conductor`
 - `xl2tpd` (L2TP), `iperf`, `socat`
 
-## Servizi rimossi rispetto alla 1.0.3 (hardening / riduzione superficie d'attacco)
+## Servizi rimossi rispetto alla 1.0.3 (hardening)
 
 | Servizio rimosso | Motivo probabile |
 |---|---|
