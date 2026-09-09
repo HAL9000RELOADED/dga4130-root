@@ -30,6 +30,50 @@ usando il modulo PowerShell `Posh-SSH` invece di WinSCP/PuTTY manuali.
   non documentato pubblicamente — va lanciato a mano una volta, poi lo
   script prende il controllo appena il modem risponde su root/root).
 
+## Bank planning: quando saltare lo swap-then-erase (variante più sicura)
+
+La **Fase 1** dello script (swap-then-erase) parte dal presupposto peggiore:
+non sai in che stato sono i due bank, quindi sposti l'overlay del bank
+attivo su `bank_2`, attivi `bank_1` e **cancelli** il contenuto precedente
+di `bank_1` prima ancora di scrivere il nuovo firmware. È la scelta giusta
+quando non hai modo di verificare lo stato reale dei bank in anticipo.
+
+**Verificato in una sessione reale (2026-09-09)**: se il bank *non* attivo
+è già completamente vuoto (cancellato, tutti byte `0xFF`), lo swap-then-erase
+è superfluo e più rischioso del necessario — per una finestra di tempo hai
+comunque un solo bank scrivibile/utilizzabile. La variante più sicura in
+questo caso specifico:
+
+1. Verifica lo stato reale **prima** di toccare qualunque cosa:
+   ```sh
+   cat /proc/banktable/booted /proc/banktable/active /proc/banktable/inactive
+   # il bank booted è quello che stai attualmente usando via SSH — non toccarlo
+   dd if=/dev/mtd<N-del-bank-inactive> bs=1 count=64 2>/dev/null | hexdump -C
+   # se sono tutti "ff", il bank è vuoto: sicuro da scrivere direttamente
+   ```
+2. Se il bank inattivo è vuoto: **non** fare lo swap-then-erase. Carica e
+   sigilla il firmware come al solito (`bli_parser`/`bli_unseal` — vedi Fase
+   2 dello script), poi scrivi il risultato **direttamente** nel bank vuoto
+   e imposta quello come attivo:
+   ```sh
+   mtd write "/tmp/new.bin" bank_1   # o bank_2, quello risultato vuoto
+   echo bank_1 > /proc/banktable/active
+   ```
+3. Il bank attualmente booted (con la sua root già ottenuta) resta
+   **intatto e intoccato** per tutta la procedura — è un fallback
+   automatico se il nuovo bank non si avvia, invece di passare per una
+   finestra in cui nessun bank è garantito funzionante.
+4. Prima del reboot, replica lo stesso `rc.local` di persistenza root
+   (vedi `$rcLocalContent` nello script) dentro
+   `/overlay/<bank-appena-scritto>/etc/rc.local` — si autoelimina al primo
+   boot, esattamente come nella Fase 3 originale.
+
+**Quando NON usare questa variante**: se non sei sicuro che il bank
+"inattivo" sia davvero vuoto (es. contiene un firmware precedente valido
+che vuoi comunque sostituire), torna alla Fase 1 standard dello script —
+scrivere direttamente sopra un bank non vuoto senza lo swap dell'overlay
+lascia un overlay orfano/incoerente.
+
 ## Prerequisiti
 
 1. **Firmware "di tipo 2"** corretto per il tuo modem — link nella guida
