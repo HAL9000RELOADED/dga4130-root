@@ -1,0 +1,37 @@
+
+/root/build/real_firmware_245/bli_tools/bli_unseal_rsa_helper:     file format elf32-littlearm
+
+DYNAMIC RELOCATION RECORDS
+OFFSET   TYPE              VALUE 
+00021ffc R_ARM_GLOB_DAT    __gmon_start__
+00022008 R_ARM_COPY        stderr
+00022010 R_ARM_COPY        stdin
+00022014 R_ARM_COPY        stdout
+00022018 R_ARM_COPY        optarg
+00021f98 R_ARM_JUMP_SLOT   fopen
+00021f9c R_ARM_JUMP_SLOT   read
+00021fa0 R_ARM_JUMP_SLOT   BN_bin2bn
+00021fa4 R_ARM_JUMP_SLOT   RSA_free
+00021fa8 R_ARM_JUMP_SLOT   fwrite
+00021fac R_ARM_JUMP_SLOT   fread
+00021fb0 R_ARM_JUMP_SLOT   puts
+00021fb4 R_ARM_JUMP_SLOT   __libc_start_main
+00021fb8 R_ARM_JUMP_SLOT   __gmon_start__
+00021fbc R_ARM_JUMP_SLOT   open
+00021fc0 R_ARM_JUMP_SLOT   exit
+00021fc4 R_ARM_JUMP_SLOT   getopt
+00021fc8 R_ARM_JUMP_SLOT   RSA_public_decrypt
+00021fcc R_ARM_JUMP_SLOT   setvbuf
+00021fd0 R_ARM_JUMP_SLOT   SHA1_Update
+00021fd4 R_ARM_JUMP_SLOT   memset
+00021fd8 R_ARM_JUMP_SLOT   putchar
+00021fdc R_ARM_JUMP_SLOT   __printf_chk
+00021fe0 R_ARM_JUMP_SLOT   RSA_new
+00021fe4 R_ARM_JUMP_SLOT   fclose
+00021fe8 R_ARM_JUMP_SLOT   SHA1_Init
+00021fec R_ARM_JUMP_SLOT   fputs
+00021ff0 R_ARM_JUMP_SLOT   abort
+00021ff4 R_ARM_JUMP_SLOT   close
+00021ff8 R_ARM_JUMP_SLOT   SHA1_Final
+
+

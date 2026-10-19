@@ -1,0 +1,6 @@
+services:
+  dga4130-monitor:
+    build: .
+    container_name: dga4130-monitor
+    restart: unless-stopped
+    network_mode: bridge

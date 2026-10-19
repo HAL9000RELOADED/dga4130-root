@@ -1,0 +1,195 @@
+=== PLT disassembly with symbol resolution ===
+00010b70 <.plt>:
+   10b70:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+   10b74:	e59fe004 	ldr	lr, [pc, #4]	; 10b80 <_init+0x1c>
+   10b78:	e08fe00e 	add	lr, pc, lr
+   10b7c:	e5bef008 	ldr	pc, [lr, #8]!
+   10b80:	000123c4 	andeq	r2, r1, r4, asr #7
+   10b84:	e28fc600 	add	ip, pc, #0, 12
+   10b88:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10b8c:	e5bcf3c4 	ldr	pc, [ip, #964]!	; 0x3c4
+   10b90:	e28fc600 	add	ip, pc, #0, 12
+   10b94:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10b98:	e5bcf3bc 	ldr	pc, [ip, #956]!	; 0x3bc
+   10b9c:	e28fc600 	add	ip, pc, #0, 12
+   10ba0:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10ba4:	e5bcf3b4 	ldr	pc, [ip, #948]!	; 0x3b4
+   10ba8:	e28fc600 	add	ip, pc, #0, 12
+   10bac:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10bb0:	e5bcf3ac 	ldr	pc, [ip, #940]!	; 0x3ac
+   10bb4:	e28fc600 	add	ip, pc, #0, 12
+   10bb8:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10bbc:	e5bcf3a4 	ldr	pc, [ip, #932]!	; 0x3a4
+   10bc0:	e28fc600 	add	ip, pc, #0, 12
+   10bc4:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10bc8:	e5bcf39c 	ldr	pc, [ip, #924]!	; 0x39c
+   10bcc:	e28fc600 	add	ip, pc, #0, 12
+   10bd0:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10bd4:	e5bcf394 	ldr	pc, [ip, #916]!	; 0x394
+   10bd8:	e28fc600 	add	ip, pc, #0, 12
+   10bdc:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10be0:	e5bcf38c 	ldr	pc, [ip, #908]!	; 0x38c
+   10be4:	e28fc600 	add	ip, pc, #0, 12
+   10be8:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10bec:	e5bcf384 	ldr	pc, [ip, #900]!	; 0x384
+   10bf0:	e28fc600 	add	ip, pc, #0, 12
+   10bf4:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10bf8:	e5bcf37c 	ldr	pc, [ip, #892]!	; 0x37c
+   10bfc:	e28fc600 	add	ip, pc, #0, 12
+   10c00:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10c04:	e5bcf374 	ldr	pc, [ip, #884]!	; 0x374
+   10c08:	e28fc600 	add	ip, pc, #0, 12
+   10c0c:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10c10:	e5bcf36c 	ldr	pc, [ip, #876]!	; 0x36c
+   10c14:	e28fc600 	add	ip, pc, #0, 12
+   10c18:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10c1c:	e5bcf364 	ldr	pc, [ip, #868]!	; 0x364
+   10c20:	e28fc600 	add	ip, pc, #0, 12
+   10c24:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10c28:	e5bcf35c 	ldr	pc, [ip, #860]!	; 0x35c
+   10c2c:	e28fc600 	add	ip, pc, #0, 12
+   10c30:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10c34:	e5bcf354 	ldr	pc, [ip, #852]!	; 0x354
+   10c38:	e28fc600 	add	ip, pc, #0, 12
+   10c3c:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10c40:	e5bcf34c 	ldr	pc, [ip, #844]!	; 0x34c
+   10c44:	e28fc600 	add	ip, pc, #0, 12
+   10c48:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10c4c:	e5bcf344 	ldr	pc, [ip, #836]!	; 0x344
+   10c50:	e28fc600 	add	ip, pc, #0, 12
+   10c54:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10c58:	e5bcf33c 	ldr	pc, [ip, #828]!	; 0x33c
+   10c5c:	e28fc600 	add	ip, pc, #0, 12
+   10c60:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10c64:	e5bcf334 	ldr	pc, [ip, #820]!	; 0x334
+   10c68:	e28fc600 	add	ip, pc, #0, 12
+   10c6c:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10c70:	e5bcf32c 	ldr	pc, [ip, #812]!	; 0x32c
+   10c74:	e28fc600 	add	ip, pc, #0, 12
+   10c78:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10c7c:	e5bcf324 	ldr	pc, [ip, #804]!	; 0x324
+   10c80:	e28fc600 	add	ip, pc, #0, 12
+   10c84:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10c88:	e5bcf31c 	ldr	pc, [ip, #796]!	; 0x31c
+   10c8c:	e28fc600 	add	ip, pc, #0, 12
+   10c90:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10c94:	e5bcf314 	ldr	pc, [ip, #788]!	; 0x314
+   10c98:	e28fc600 	add	ip, pc, #0, 12
+   10c9c:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10ca0:	e5bcf30c 	ldr	pc, [ip, #780]!	; 0x30c
+   10ca4:	e28fc600 	add	ip, pc, #0, 12
+   10ca8:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10cac:	e5bcf304 	ldr	pc, [ip, #772]!	; 0x304
+   10cb0:	e28fc600 	add	ip, pc, #0, 12
+   10cb4:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10cb8:	e5bcf2fc 	ldr	pc, [ip, #764]!	; 0x2fc
+   10cbc:	e28fc600 	add	ip, pc, #0, 12
+   10cc0:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10cc4:	e5bcf2f4 	ldr	pc, [ip, #756]!	; 0x2f4
+   10cc8:	e28fc600 	add	ip, pc, #0, 12
+   10ccc:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10cd0:	e5bcf2ec 	ldr	pc, [ip, #748]!	; 0x2ec
+   10cd4:	e28fc600 	add	ip, pc, #0, 12
+   10cd8:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10cdc:	e5bcf2e4 	ldr	pc, [ip, #740]!	; 0x2e4
+   10ce0:	e28fc600 	add	ip, pc, #0, 12
+   10ce4:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10ce8:	e5bcf2dc 	ldr	pc, [ip, #732]!	; 0x2dc
+   10cec:	e28fc600 	add	ip, pc, #0, 12
+   10cf0:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10cf4:	e5bcf2d4 	ldr	pc, [ip, #724]!	; 0x2d4
+   10cf8:	e28fc600 	add	ip, pc, #0, 12
+   10cfc:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10d00:	e5bcf2cc 	ldr	pc, [ip, #716]!	; 0x2cc
+   10d04:	e28fc600 	add	ip, pc, #0, 12
+   10d08:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10d0c:	e5bcf2c4 	ldr	pc, [ip, #708]!	; 0x2c4
+   10d10:	e28fc600 	add	ip, pc, #0, 12
+   10d14:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10d18:	e5bcf2bc 	ldr	pc, [ip, #700]!	; 0x2bc
+   10d1c:	e28fc600 	add	ip, pc, #0, 12
+   10d20:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10d24:	e5bcf2b4 	ldr	pc, [ip, #692]!	; 0x2b4
+   10d28:	e28fc600 	add	ip, pc, #0, 12
+   10d2c:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10d30:	e5bcf2ac 	ldr	pc, [ip, #684]!	; 0x2ac
+   10d34:	e28fc600 	add	ip, pc, #0, 12
+   10d38:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10d3c:	e5bcf2a4 	ldr	pc, [ip, #676]!	; 0x2a4
+   10d40:	e28fc600 	add	ip, pc, #0, 12
+   10d44:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10d48:	e5bcf29c 	ldr	pc, [ip, #668]!	; 0x29c
+   10d4c:	e28fc600 	add	ip, pc, #0, 12
+   10d50:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10d54:	e5bcf294 	ldr	pc, [ip, #660]!	; 0x294
+   10d58:	e28fc600 	add	ip, pc, #0, 12
+   10d5c:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10d60:	e5bcf28c 	ldr	pc, [ip, #652]!	; 0x28c
+   10d64:	e28fc600 	add	ip, pc, #0, 12
+   10d68:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10d6c:	e5bcf284 	ldr	pc, [ip, #644]!	; 0x284
+   10d70:	e28fc600 	add	ip, pc, #0, 12
+   10d74:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10d78:	e5bcf27c 	ldr	pc, [ip, #636]!	; 0x27c
+   10d7c:	e28fc600 	add	ip, pc, #0, 12
+   10d80:	e28cca12 	add	ip, ip, #73728	; 0x12000
+   10d84:	e5bcf274 	ldr	pc, [ip, #628]!	; 0x274
+
+Disassembly of section .text:
+
+00010d88 <.text>:
+
+=== dynamic relocations (PLT symbol mapping) ===
+
+Relocation section '.rel.dyn' at offset 0x9ec contains 4 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+00022ffc  00000115 R_ARM_GLOB_DAT    00000000   __gmon_start__
+00023008  00001614 R_ARM_COPY        00023008   stderr
+00023010  00002b14 R_ARM_COPY        00023010   stdin
+00023018  00002414 R_ARM_COPY        00023018   optarg
+
+Relocation section '.rel.plt' at offset 0xa0c contains 43 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+00022f50  00003016 R_ARM_JUMP_SLOT   00000000   d2i_DSAPublicKey
+00022f54  00002716 R_ARM_JUMP_SLOT   00000000   strtol
+00022f58  00000a16 R_ARM_JUMP_SLOT   00000000   fopen
+00022f5c  00000f16 R_ARM_JUMP_SLOT   00000000   read
+00022f60  00000c16 R_ARM_JUMP_SLOT   00000000   free
+00022f64  00002316 R_ARM_JUMP_SLOT   00000000   memcmp
+00022f68  00000d16 R_ARM_JUMP_SLOT   00000000   BN_bin2bn
+00022f6c  00000616 R_ARM_JUMP_SLOT   00000000   RSA_free
+00022f70  00001516 R_ARM_JUMP_SLOT   00000000   perror
+00022f74  00002216 R_ARM_JUMP_SLOT   00000000   SHA256_Init
+00022f78  00002816 R_ARM_JUMP_SLOT   00000000   DSA_free
+00022f7c  00001716 R_ARM_JUMP_SLOT   00000000   fread
+00022f80  00002d16 R_ARM_JUMP_SLOT   00000000   puts
+00022f84  00000216 R_ARM_JUMP_SLOT   00000000   malloc
+00022f88  00001316 R_ARM_JUMP_SLOT   00000000   __libc_start_main
+00022f8c  00000316 R_ARM_JUMP_SLOT   00000000   __fxstat
+00022f90  00000116 R_ARM_JUMP_SLOT   00000000   __gmon_start__
+00022f94  00000416 R_ARM_JUMP_SLOT   00000000   open
+00022f98  00001f16 R_ARM_JUMP_SLOT   00000000   exit
+00022f9c  00002516 R_ARM_JUMP_SLOT   00000000   mmap
+00022fa0  00002916 R_ARM_JUMP_SLOT   00000000   getopt
+00022fa4  00001816 R_ARM_JUMP_SLOT   00000000   RSA_public_decrypt
+00022fa8  00000e16 R_ARM_JUMP_SLOT   00000000   setvbuf
+00022fac  00000916 R_ARM_JUMP_SLOT   00000000   SHA1_Update
+00022fb0  00002016 R_ARM_JUMP_SLOT   00000000   memset
+00022fb4  00001d16 R_ARM_JUMP_SLOT   00000000   putchar
+00022fb8  00002a16 R_ARM_JUMP_SLOT   00000000   __printf_chk
+00022fbc  00001916 R_ARM_JUMP_SLOT   00000000   RSA_new
+00022fc0  00000716 R_ARM_JUMP_SLOT   00000000   ERR_error_string
+00022fc4  00001b16 R_ARM_JUMP_SLOT   00000000   __fprintf_chk
+00022fc8  00002616 R_ARM_JUMP_SLOT   00000000   fclose
+00022fcc  00002c16 R_ARM_JUMP_SLOT   00000000   SHA256_Final
+00022fd0  00001016 R_ARM_JUMP_SLOT   00000000   munmap
+00022fd4  00001116 R_ARM_JUMP_SLOT   00000000   SHA1_Init
+00022fd8  00000516 R_ARM_JUMP_SLOT   00000000   SHA256_Update
+00022fdc  00001416 R_ARM_JUMP_SLOT   00000000   ERR_get_error
+00022fe0  00002e16 R_ARM_JUMP_SLOT   00000000   RSA_verify_PKCS1_PSS
+00022fe4  00001e16 R_ARM_JUMP_SLOT   00000000   DSA_verify
+00022fe8  00002116 R_ARM_JUMP_SLOT   00000000   EVP_sha256
+00022fec  00000816 R_ARM_JUMP_SLOT   00000000   fputs
+00022ff0  00001a16 R_ARM_JUMP_SLOT   00000000   abort
+00022ff4  00001c16 R_ARM_JUMP_SLOT   00000000   close
+00022ff8  00001216 R_ARM_JUMP_SLOT   00000000   SHA1_Final

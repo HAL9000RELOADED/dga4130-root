@@ -1,0 +1,25 @@
+--- calls to 10b84 (d2i_DSAPublicKey) ---
+345:   11088:	ebfffebd 	bl	10b84 <_init+0x20>
+--- calls to 10d40 (DSA_verify) ---
+1038:   11b5c:	ebfffc77 	bl	10d40 <_init+0x1dc>
+--- calls to 10bcc (BN_bin2bn) ---
+631:   11500:	ebfffdb1 	bl	10bcc <_init+0x68>
+636:   11514:	ebfffdac 	bl	10bcc <_init+0x68>
+1072:   11be4:	ebfffbf8 	bl	10bcc <_init+0x68>
+1078:   11bfc:	ebfffbf2 	bl	10bcc <_init+0x68>
+--- calls to 10cc8 (RSA_new) ---
+604:   11494:	ebfffe0b 	bl	10cc8 <_init+0x164>
+1064:   11bc4:	ebfffc3f 	bl	10cc8 <_init+0x164>
+--- disasm 0x11c20-0x11c34 helper (calls RSA_free? check) ---
+
+/root/build/real_firmware_245/bli_tools/signature_checker:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00011c20 <.text+0xe98>:
+   11c20:	e92d4010 	push	{r4, lr}
+   11c24:	e5900004 	ldr	r0, [r0, #4]
+   11c28:	ebfffbea 	bl	10bd8 <_init+0x74>
+   11c2c:	e3a00000 	mov	r0, #0
+   11c30:	e8bd8010 	pop	{r4, pc}

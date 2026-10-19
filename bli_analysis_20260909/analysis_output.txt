@@ -1,0 +1,533 @@
+=============================================
+===== FILE: signature_checker =====
+=============================================
+--- readelf -h ---
+ELF Header:
+  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF32
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           ARM
+  Version:                           0x1
+  Entry point address:               0x11408
+  Start of program headers:          52 (bytes into file)
+  Start of section headers:          12572 (bytes into file)
+  Flags:                             0x5000200, Version5 EABI, soft-float ABI
+  Size of this header:               52 (bytes)
+  Size of program headers:           32 (bytes)
+  Number of program headers:         9
+  Size of section headers:           40 (bytes)
+  Number of section headers:         26
+  Section header string table index: 25
+--- readelf -d (dynamic section / NEEDED libs) ---
+
+Dynamic section at offset 0x2e2c contains 30 entries:
+  Tag        Type                         Name/Value
+ 0x00000001 (NEEDED)                     Shared library: [libssl.so.1.0.0]
+ 0x00000001 (NEEDED)                     Shared library: [libcrypto.so.1.0.0]
+ 0x00000001 (NEEDED)                     Shared library: [libgcc_s.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libc.so.6]
+ 0x0000000c (INIT)                       0x10b64
+ 0x0000000d (FINI)                       0x11d00
+ 0x00000019 (INIT_ARRAY)                 0x22e24
+ 0x0000001b (INIT_ARRAYSZ)               4 (bytes)
+ 0x0000001a (FINI_ARRAY)                 0x22e28
+ 0x0000001c (FINI_ARRAYSZ)               4 (bytes)
+ 0x00000004 (HASH)                       0x10188
+ 0x6ffffef5 (GNU_HASH)                   0x102e8
+ 0x00000005 (STRTAB)                     0x10778
+ 0x00000006 (SYMTAB)                     0x10468
+ 0x0000000a (STRSZ)                      495 (bytes)
+ 0x0000000b (SYMENT)                     16 (bytes)
+ 0x00000015 (DEBUG)                      0x0
+ 0x00000003 (PLTGOT)                     0x22f44
+ 0x00000002 (PLTRELSZ)                   344 (bytes)
+ 0x00000014 (PLTREL)                     REL
+ 0x00000017 (JMPREL)                     0x10a0c
+ 0x00000011 (REL)                        0x109ec
+ 0x00000012 (RELSZ)                      32 (bytes)
+ 0x00000013 (RELENT)                     8 (bytes)
+ 0x00000018 (BIND_NOW)                   
+ 0x6ffffffb (FLAGS_1)                    Flags: NOW
+ 0x6ffffffe (VERNEED)                    0x109cc
+ 0x6fffffff (VERNEEDNUM)                 1
+ 0x6ffffff0 (VERSYM)                     0x10968
+ 0x00000000 (NULL)                       0x0
+--- readelf -sW (symbol table, dynsym+symtab) ---
+
+Symbol table '.dynsym' contains 49 entries:
+   Num:    Value  Size Type    Bind   Vis      Ndx Name
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 00000000     0 NOTYPE  WEAK   DEFAULT  UND __gmon_start__
+     2: 00000000     0 FUNC    GLOBAL DEFAULT  UND malloc@GLIBC_2.4 (2)
+     3: 00000000     0 FUNC    GLOBAL DEFAULT  UND __fxstat@GLIBC_2.4 (2)
+     4: 00000000     0 FUNC    GLOBAL DEFAULT  UND open@GLIBC_2.4 (2)
+     5: 00000000     0 FUNC    GLOBAL DEFAULT  UND SHA256_Update
+     6: 00000000     0 FUNC    GLOBAL DEFAULT  UND RSA_free
+     7: 00000000     0 FUNC    GLOBAL DEFAULT  UND ERR_error_string
+     8: 00000000     0 FUNC    GLOBAL DEFAULT  UND fputs@GLIBC_2.4 (2)
+     9: 00000000     0 FUNC    GLOBAL DEFAULT  UND SHA1_Update
+    10: 00000000     0 FUNC    GLOBAL DEFAULT  UND fopen@GLIBC_2.4 (2)
+    11: 00011d00     0 FUNC    GLOBAL DEFAULT   14 _fini
+    12: 00000000     0 FUNC    GLOBAL DEFAULT  UND free@GLIBC_2.4 (2)
+    13: 00000000     0 FUNC    GLOBAL DEFAULT  UND BN_bin2bn
+    14: 00000000     0 FUNC    GLOBAL DEFAULT  UND setvbuf@GLIBC_2.4 (2)
+    15: 00000000     0 FUNC    GLOBAL DEFAULT  UND read@GLIBC_2.4 (2)
+    16: 00000000     0 FUNC    GLOBAL DEFAULT  UND munmap@GLIBC_2.4 (2)
+    17: 00000000     0 FUNC    GLOBAL DEFAULT  UND SHA1_Init
+    18: 00000000     0 FUNC    GLOBAL DEFAULT  UND SHA1_Final
+    19: 00000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_main@GLIBC_2.4 (2)
+    20: 00000000     0 FUNC    GLOBAL DEFAULT  UND ERR_get_error
+    21: 00000000     0 FUNC    GLOBAL DEFAULT  UND perror@GLIBC_2.4 (2)
+    22: 00023008     4 OBJECT  GLOBAL DEFAULT   23 stderr@GLIBC_2.4 (2)
+    23: 00000000     0 FUNC    GLOBAL DEFAULT  UND fread@GLIBC_2.4 (2)
+    24: 00000000     0 FUNC    GLOBAL DEFAULT  UND RSA_public_decrypt
+    25: 00000000     0 FUNC    GLOBAL DEFAULT  UND RSA_new
+    26: 00000000     0 FUNC    GLOBAL DEFAULT  UND abort@GLIBC_2.4 (2)
+    27: 00000000     0 FUNC    GLOBAL DEFAULT  UND __fprintf_chk@GLIBC_2.4 (2)
+    28: 00000000     0 FUNC    GLOBAL DEFAULT  UND close@GLIBC_2.4 (2)
+    29: 00000000     0 FUNC    GLOBAL DEFAULT  UND putchar@GLIBC_2.4 (2)
+    30: 00000000     0 FUNC    GLOBAL DEFAULT  UND DSA_verify
+    31: 00000000     0 FUNC    GLOBAL DEFAULT  UND exit@GLIBC_2.4 (2)
+    32: 00000000     0 FUNC    GLOBAL DEFAULT  UND memset@GLIBC_2.4 (2)
+    33: 00000000     0 FUNC    GLOBAL DEFAULT  UND EVP_sha256
+    34: 00000000     0 FUNC    GLOBAL DEFAULT  UND SHA256_Init
+    35: 00000000     0 FUNC    GLOBAL DEFAULT  UND memcmp@GLIBC_2.4 (2)
+    36: 00023018     4 OBJECT  GLOBAL DEFAULT   23 optarg@GLIBC_2.4 (2)
+    37: 00000000     0 FUNC    GLOBAL DEFAULT  UND mmap@GLIBC_2.4 (2)
+    38: 00000000     0 FUNC    GLOBAL DEFAULT  UND fclose@GLIBC_2.4 (2)
+    39: 00000000     0 FUNC    GLOBAL DEFAULT  UND strtol@GLIBC_2.4 (2)
+    40: 00000000     0 FUNC    GLOBAL DEFAULT  UND DSA_free
+    41: 00000000     0 FUNC    GLOBAL DEFAULT  UND getopt@GLIBC_2.4 (2)
+    42: 00000000     0 FUNC    GLOBAL DEFAULT  UND __printf_chk@GLIBC_2.4 (2)
+    43: 00023010     4 OBJECT  GLOBAL DEFAULT   23 stdin@GLIBC_2.4 (2)
+    44: 00000000     0 FUNC    GLOBAL DEFAULT  UND SHA256_Final
+    45: 00000000     0 FUNC    GLOBAL DEFAULT  UND puts@GLIBC_2.4 (2)
+    46: 00000000     0 FUNC    GLOBAL DEFAULT  UND RSA_verify_PKCS1_PSS
+    47: 00010b64     0 FUNC    GLOBAL DEFAULT   11 _init
+    48: 00000000     0 FUNC    GLOBAL DEFAULT  UND d2i_DSAPublicKey
+--- strings (len>=5) ---
+/lib/ld-linux.so.3
+_s%o7
+libssl.so.1.0.0
+BN_bin2bn
+RSA_free
+SHA256_Init
+__gmon_start__
+RSA_new
+SHA1_Init
+DSA_verify
+EVP_sha256
+_init
+_fini
+libcrypto.so.1.0.0
+RSA_public_decrypt
+SHA256_Update
+d2i_DSAPublicKey
+ERR_error_string
+ERR_get_error
+RSA_verify_PKCS1_PSS
+SHA1_Update
+SHA256_Final
+DSA_free
+SHA1_Final
+libgcc_s.so.1
+libc.so.6
+__printf_chk
+fopen
+perror
+putchar
+abort
+stdin
+strtol
+memset
+memcmp
+getopt
+__fprintf_chk
+fputs
+fclose
+malloc
+optarg
+stderr
+munmap
+fread
+setvbuf
+__libc_start_main
+__fxstat
+GLIBC_2.4
+opening key file for reading
+reading from key file
+Usage: %s [-r|-c] [mtd device name of bank] [size of bank] [signature file (only needed in checking mode)]
+       %s {-k [KEY]} -b {BLI}
+       %s -h
+Tool to identify and check the RSA or DSA signature of a build.
+	-h	display help
+	-r	retrieve signature from Infoblocks in flash
+	-c 	check signature of build in flash against the signature in the given file
+	-b [FILE]	verify the signature of a given BLI/RBI (otherwise stdin)
+	-k [FILE]	key (otherwise /proc/rip/0120)
+Error calculating signature
+Out of memory
+Error reading from input
+Signature incorrect
+/proc/rip/0116
+opening rsa key file error 
+reading from rsa key file error 
+Error reading from input.
+Error reading from input 
+unseal bli signature failed,unsealed_rsa_len=%d 
+bli signature check failedm,tempFileSize=%d 
+/proc/rip/0120
+/proc/rip/0101
+/proc/rip/0100
+hcrbk:
+opening mtd file for reading
+Unknown header 0x%08x
+Error importing DSA key from rip: %s
+opening signature file
+fstat
+reading from signature file
+Error reading signature file %s
+Signature of build in flash matches given signature.
+munmap
+OSIK or user supplied key file '%s' doesn't exist 
+RSA key exists 
+both OSIK key and RSA key don't exist; exit(1) 
+Could not open %s
+Error mmapping %s
+Signature of build in flash does not match given signature!
+aeabi
+Cortex-A9
+.shstrtab
+.interp
+.note.ABI-tag
+.gnu.hash
+.dynsym
+.dynstr
+.gnu.version
+.gnu.version_r
+.rel.dyn
+.rel.plt
+.init
+.text
+.fini
+.rodata
+.ARM.exidx
+.eh_frame
+.init_array
+.fini_array
+.dynamic
+.data
+.ARM.attributes
+
+=============================================
+===== FILE: bli_unseal_rsa_helper =====
+=============================================
+--- readelf -h ---
+ELF Header:
+  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF32
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           ARM
+  Version:                           0x1
+  Entry point address:               0x10a6c
+  Start of program headers:          52 (bytes into file)
+  Start of section headers:          8476 (bytes into file)
+  Flags:                             0x5000200, Version5 EABI, soft-float ABI
+  Size of this header:               52 (bytes)
+  Size of program headers:           32 (bytes)
+  Number of program headers:         9
+  Size of section headers:           40 (bytes)
+  Number of section headers:         26
+  Section header string table index: 25
+--- readelf -d (dynamic section / NEEDED libs) ---
+
+Dynamic section at offset 0x1e74 contains 30 entries:
+  Tag        Type                         Name/Value
+ 0x00000001 (NEEDED)                     Shared library: [libssl.so.1.0.0]
+ 0x00000001 (NEEDED)                     Shared library: [libcrypto.so.1.0.0]
+ 0x00000001 (NEEDED)                     Shared library: [libgcc_s.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libc.so.6]
+ 0x0000000c (INIT)                       0x107c4
+ 0x0000000d (FINI)                       0x10dec
+ 0x00000019 (INIT_ARRAY)                 0x21e6c
+ 0x0000001b (INIT_ARRAYSZ)               4 (bytes)
+ 0x0000001a (FINI_ARRAY)                 0x21e70
+ 0x0000001c (FINI_ARRAYSZ)               4 (bytes)
+ 0x00000004 (HASH)                       0x10188
+ 0x6ffffef5 (GNU_HASH)                   0x10254
+ 0x00000005 (STRTAB)                     0x10540
+ 0x00000006 (SYMTAB)                     0x10340
+ 0x0000000a (STRSZ)                      307 (bytes)
+ 0x0000000b (SYMENT)                     16 (bytes)
+ 0x00000015 (DEBUG)                      0x0
+ 0x00000003 (PLTGOT)                     0x21f8c
+ 0x00000002 (PLTRELSZ)                   200 (bytes)
+ 0x00000014 (PLTREL)                     REL
+ 0x00000017 (JMPREL)                     0x106fc
+ 0x00000011 (REL)                        0x106d4
+ 0x00000012 (RELSZ)                      40 (bytes)
+ 0x00000013 (RELENT)                     8 (bytes)
+ 0x00000018 (BIND_NOW)                   
+ 0x6ffffffb (FLAGS_1)                    Flags: NOW
+ 0x6ffffffe (VERNEED)                    0x106b4
+ 0x6fffffff (VERNEEDNUM)                 1
+ 0x6ffffff0 (VERSYM)                     0x10674
+ 0x00000000 (NULL)                       0x0
+--- readelf -sW (symbol table, dynsym+symtab) ---
+
+Symbol table '.dynsym' contains 32 entries:
+   Num:    Value  Size Type    Bind   Vis      Ndx Name
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 00000000     0 NOTYPE  WEAK   DEFAULT  UND __gmon_start__
+     2: 00000000     0 FUNC    GLOBAL DEFAULT  UND fread@GLIBC_2.4 (2)
+     3: 00000000     0 FUNC    GLOBAL DEFAULT  UND SHA1_Update
+     4: 00010dec     0 FUNC    GLOBAL DEFAULT   14 _fini
+     5: 00000000     0 FUNC    GLOBAL DEFAULT  UND open@GLIBC_2.4 (2)
+     6: 00000000     0 FUNC    GLOBAL DEFAULT  UND memset@GLIBC_2.4 (2)
+     7: 00000000     0 FUNC    GLOBAL DEFAULT  UND setvbuf@GLIBC_2.4 (2)
+     8: 000107c4     0 FUNC    GLOBAL DEFAULT   11 _init
+     9: 00000000     0 FUNC    GLOBAL DEFAULT  UND fopen@GLIBC_2.4 (2)
+    10: 00000000     0 FUNC    GLOBAL DEFAULT  UND getopt@GLIBC_2.4 (2)
+    11: 00000000     0 FUNC    GLOBAL DEFAULT  UND abort@GLIBC_2.4 (2)
+    12: 00000000     0 FUNC    GLOBAL DEFAULT  UND exit@GLIBC_2.4 (2)
+    13: 00000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_main@GLIBC_2.4 (2)
+    14: 00000000     0 FUNC    GLOBAL DEFAULT  UND __printf_chk@GLIBC_2.4 (2)
+    15: 00022008     4 OBJECT  GLOBAL DEFAULT   23 stderr@GLIBC_2.4 (2)
+    16: 00000000     0 FUNC    GLOBAL DEFAULT  UND putchar@GLIBC_2.4 (2)
+    17: 00000000     0 FUNC    GLOBAL DEFAULT  UND fclose@GLIBC_2.4 (2)
+    18: 00000000     0 FUNC    GLOBAL DEFAULT  UND BN_bin2bn
+    19: 00000000     0 FUNC    GLOBAL DEFAULT  UND RSA_free
+    20: 00022018     4 OBJECT  GLOBAL DEFAULT   23 optarg@GLIBC_2.4 (2)
+    21: 00000000     0 FUNC    GLOBAL DEFAULT  UND puts@GLIBC_2.4 (2)
+    22: 00022010     4 OBJECT  GLOBAL DEFAULT   23 stdin@GLIBC_2.4 (2)
+    23: 00000000     0 FUNC    GLOBAL DEFAULT  UND SHA1_Init
+    24: 00000000     0 FUNC    GLOBAL DEFAULT  UND close@GLIBC_2.4 (2)
+    25: 00000000     0 FUNC    GLOBAL DEFAULT  UND RSA_new
+    26: 00000000     0 FUNC    GLOBAL DEFAULT  UND fputs@GLIBC_2.4 (2)
+    27: 00000000     0 FUNC    GLOBAL DEFAULT  UND read@GLIBC_2.4 (2)
+    28: 00000000     0 FUNC    GLOBAL DEFAULT  UND RSA_public_decrypt
+    29: 00000000     0 FUNC    GLOBAL DEFAULT  UND SHA1_Final
+    30: 00000000     0 FUNC    GLOBAL DEFAULT  UND fwrite@GLIBC_2.4 (2)
+    31: 00022014     4 OBJECT  GLOBAL DEFAULT   23 stdout@GLIBC_2.4 (2)
+--- strings (len>=5) ---
+/lib/ld-linux.so.3
+_slv{
+libssl.so.1.0.0
+BN_bin2bn
+RSA_free
+__gmon_start__
+RSA_new
+SHA1_Init
+_init
+_fini
+libcrypto.so.1.0.0
+RSA_public_decrypt
+SHA1_Update
+SHA1_Final
+libgcc_s.so.1
+libc.so.6
+__printf_chk
+fopen
+putchar
+abort
+stdin
+memset
+getopt
+stdout
+fputs
+fclose
+optarg
+stderr
+fwrite
+fread
+setvbuf
+__libc_start_main
+GLIBC_2.4
+opening key file for reading
+reading from key file
+decryptfile:get RSA key failed 
+/proc/rip/0116
+Usage: %s [OPTIONS] [FILE]
+Tool to decrypt the contents of a Technicolor RBI/BLI file.
+	-h	display help
+	-k=[FILE]	key used to decrypt (defaults to /proc/rip/0116)
+If no filename is provided, stdin is used.
+Could not open %s
+aeabi
+Cortex-A9
+.shstrtab
+.interp
+.note.ABI-tag
+.gnu.hash
+.dynsym
+.dynstr
+.gnu.version
+.gnu.version_r
+.rel.dyn
+.rel.plt
+.init
+.text
+.fini
+.rodata
+.ARM.exidx
+.eh_frame
+.init_array
+.fini_array
+.dynamic
+.data
+.ARM.attributes
+
+=============================================
+===== FILE: bli_parser =====
+=============================================
+--- readelf -h ---
+ELF Header:
+  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF32
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           ARM
+  Version:                           0x1
+  Entry point address:               0x10708
+  Start of program headers:          52 (bytes into file)
+  Start of section headers:          4380 (bytes into file)
+  Flags:                             0x5000200, Version5 EABI, soft-float ABI
+  Size of this header:               52 (bytes)
+  Size of program headers:           32 (bytes)
+  Number of program headers:         9
+  Size of section headers:           40 (bytes)
+  Number of section headers:         26
+  Section header string table index: 25
+--- readelf -d (dynamic section / NEEDED libs) ---
+
+Dynamic section at offset 0xeb0 contains 28 entries:
+  Tag        Type                         Name/Value
+ 0x00000001 (NEEDED)                     Shared library: [libgcc_s.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libc.so.6]
+ 0x0000000c (INIT)                       0x10518
+ 0x0000000d (FINI)                       0x10ab0
+ 0x00000019 (INIT_ARRAY)                 0x20ea8
+ 0x0000001b (INIT_ARRAYSZ)               4 (bytes)
+ 0x0000001a (FINI_ARRAY)                 0x20eac
+ 0x0000001c (FINI_ARRAYSZ)               4 (bytes)
+ 0x00000004 (HASH)                       0x10188
+ 0x6ffffef5 (GNU_HASH)                   0x1021c
+ 0x00000005 (STRTAB)                     0x103a8
+ 0x00000006 (SYMTAB)                     0x10288
+ 0x0000000a (STRSZ)                      169 (bytes)
+ 0x0000000b (SYMENT)                     16 (bytes)
+ 0x00000015 (DEBUG)                      0x0
+ 0x00000003 (PLTGOT)                     0x20fb8
+ 0x00000002 (PLTRELSZ)                   112 (bytes)
+ 0x00000014 (PLTREL)                     REL
+ 0x00000017 (JMPREL)                     0x104a8
+ 0x00000011 (REL)                        0x10498
+ 0x00000012 (RELSZ)                      16 (bytes)
+ 0x00000013 (RELENT)                     8 (bytes)
+ 0x00000018 (BIND_NOW)                   
+ 0x6ffffffb (FLAGS_1)                    Flags: NOW
+ 0x6ffffffe (VERNEED)                    0x10478
+ 0x6fffffff (VERNEEDNUM)                 1
+ 0x6ffffff0 (VERSYM)                     0x10452
+ 0x00000000 (NULL)                       0x0
+--- readelf -sW (symbol table, dynsym+symtab) ---
+
+Symbol table '.dynsym' contains 18 entries:
+   Num:    Value  Size Type    Bind   Vis      Ndx Name
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 00000000     0 NOTYPE  WEAK   DEFAULT  UND __gmon_start__
+     2: 00000000     0 FUNC    GLOBAL DEFAULT  UND fread@GLIBC_2.4 (2)
+     3: 00000000     0 FUNC    GLOBAL DEFAULT  UND puts@GLIBC_2.4 (2)
+     4: 00000000     0 FUNC    GLOBAL DEFAULT  UND setvbuf@GLIBC_2.4 (2)
+     5: 00000000     0 FUNC    GLOBAL DEFAULT  UND fopen@GLIBC_2.4 (2)
+     6: 00000000     0 FUNC    GLOBAL DEFAULT  UND free@GLIBC_2.4 (2)
+     7: 00000000     0 FUNC    GLOBAL DEFAULT  UND malloc@GLIBC_2.4 (2)
+     8: 00000000     0 FUNC    GLOBAL DEFAULT  UND exit@GLIBC_2.4 (2)
+     9: 00000000     0 FUNC    GLOBAL DEFAULT  UND getopt@GLIBC_2.4 (2)
+    10: 00021008     4 OBJECT  GLOBAL DEFAULT   23 stdin@GLIBC_2.4 (2)
+    11: 00000000     0 FUNC    GLOBAL DEFAULT  UND putchar@GLIBC_2.4 (2)
+    12: 00000000     0 FUNC    GLOBAL DEFAULT  UND __printf_chk@GLIBC_2.4 (2)
+    13: 00000000     0 FUNC    GLOBAL DEFAULT  UND fclose@GLIBC_2.4 (2)
+    14: 00000000     0 FUNC    GLOBAL DEFAULT  UND abort@GLIBC_2.4 (2)
+    15: 00010518     0 FUNC    GLOBAL DEFAULT   11 _init
+    16: 00010ab0     0 FUNC    GLOBAL DEFAULT   14 _fini
+    17: 00000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_main@GLIBC_2.4 (2)
+--- strings (len>=5) ---
+/lib/ld-linux.so.3
+libgcc_s.so.1
+__gmon_start__
+_fini
+_init
+libc.so.6
+__printf_chk
+fopen
+putchar
+abort
+stdin
+getopt
+fclose
+malloc
+fread
+setvbuf
+__libc_start_main
+GLIBC_2.4
+Could not read enough bytes
+magic_value: %.*s
+fim: %.*s
+fia: %.*s
+prodid: %.*s
+varid: %.*s
+version: %d.%c.%c.%c
+data_offset: %d
+data_size: %d
+Could not allocate enough memory
+boardname: %.*s
+prodname: %.*s
+varname: %.*s
+tagparserversion: %.*s
+target: %.*s
+flashaddress: 0x%04X
+timestamp: 0x%04X
+Unknown tag: %d
+Usage: %s [OPTIONS] [FILE]
+Tool to parse the header of a Technicolor RBI/BLI file.
+	-h	display help
+	-d	extract data part (without unsealing)
+If no filename is provided, stdin is used.
+Could not open %s
+aeabi
+Cortex-A9
+.shstrtab
+.interp
+.note.ABI-tag
+.gnu.hash
+.dynsym
+.dynstr
+.gnu.version
+.gnu.version_r
+.rel.dyn
+.rel.plt
+.init
+.text
+.fini
+.rodata
+.ARM.exidx
+.eh_frame
+.init_array
+.fini_array
+.dynamic
+.data
+.ARM.attributes
+
+DONE

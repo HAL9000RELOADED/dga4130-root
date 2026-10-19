@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+# transcript/log generati localmente dagli script elevate_*
+elevate_*_log*.txt
+elevate_log*.txt

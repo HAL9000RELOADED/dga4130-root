@@ -1,0 +1,66 @@
+=== function start 0x10d88 - 0x10e70 (prologue, getopt, path setup) ===
+
+/root/build/real_firmware_245/bli_tools/signature_checker:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00010d88 <.text>:
+   10d88:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   10d8c:	e3a0b000 	mov	fp, #0
+   10d90:	e59fa5ec 	ldr	sl, [pc, #1516]	; 11384 <_init+0x820>
+   10d94:	e24dd074 	sub	sp, sp, #116	; 0x74
+   10d98:	e1a09000 	mov	r9, r0
+   10d9c:	e1a07001 	mov	r7, r1
+   10da0:	e59f85e0 	ldr	r8, [pc, #1504]	; 11388 <_init+0x824>
+   10da4:	e1a0600b 	mov	r6, fp
+   10da8:	e1a0500b 	mov	r5, fp
+   10dac:	e3a04001 	mov	r4, #1
+   10db0:	e59f25d4 	ldr	r2, [pc, #1492]	; 1138c <_init+0x828>
+   10db4:	e1a01007 	mov	r1, r7
+   10db8:	e1a00009 	mov	r0, r9
+   10dbc:	ebffffac 	bl	10c74 <_init+0x110>
+   10dc0:	e3700001 	cmn	r0, #1
+   10dc4:	e2843001 	add	r3, r4, #1
+   10dc8:	0a000025 	beq	10e64 <_init+0x300>
+   10dcc:	e3500068 	cmp	r0, #104	; 0x68
+   10dd0:	0a000036 	beq	10eb0 <_init+0x34c>
+   10dd4:	ca000005 	bgt	10df0 <_init+0x28c>
+   10dd8:	e3500062 	cmp	r0, #98	; 0x62
+   10ddc:	0a00001d 	beq	10e58 <_init+0x2f4>
+   10de0:	e3500063 	cmp	r0, #99	; 0x63
+   10de4:	1a000017 	bne	10e48 <_init+0x2e4>
+   10de8:	e3a05001 	mov	r5, #1
+   10dec:	ea00001a 	b	10e5c <_init+0x2f8>
+   10df0:	e350006b 	cmp	r0, #107	; 0x6b
+   10df4:	0a000002 	beq	10e04 <_init+0x2a0>
+   10df8:	e3500072 	cmp	r0, #114	; 0x72
+   10dfc:	0a000013 	beq	10e50 <_init+0x2ec>
+   10e00:	ea000010 	b	10e48 <_init+0x2e4>
+   10e04:	e598a000 	ldr	sl, [r8]
+   10e08:	e2843002 	add	r3, r4, #2
+   10e0c:	ea000012 	b	10e5c <_init+0x2f8>
+   10e10:	e3500000 	cmp	r0, #0
+   10e14:	0a000152 	beq	11364 <_init+0x800>
+   10e18:	e3560000 	cmp	r6, #0
+   10e1c:	e59f656c 	ldr	r6, [pc, #1388]	; 11390 <_init+0x82c>
+   10e20:	1a00003e 	bne	10f20 <_init+0x3bc>
+   10e24:	e3550000 	cmp	r5, #0
+   10e28:	1a000063 	bne	10fbc <_init+0x458>
+   10e2c:	e1a0100a 	mov	r1, sl
+   10e30:	e1a00004 	mov	r0, r4
+   10e34:	ebffffb2 	bl	10d04 <_init+0x1a0>
+   10e38:	e3500000 	cmp	r0, #0
+   10e3c:	0a0000fa 	beq	1122c <_init+0x6c8>
+   10e40:	e59f054c 	ldr	r0, [pc, #1356]	; 11394 <_init+0x830>
+   10e44:	ebffff66 	bl	10be4 <_init+0x80>
+   10e48:	e3a00000 	mov	r0, #0
+   10e4c:	ebffff82 	bl	10c5c <_init+0xf8>
+   10e50:	e3a06001 	mov	r6, #1
+   10e54:	ea000000 	b	10e5c <_init+0x2f8>
+   10e58:	e3a0b001 	mov	fp, #1
+   10e5c:	e1a04003 	mov	r4, r3
+   10e60:	eaffffd2 	b	10db0 <_init+0x24c>
+   10e64:	e1958006 	orrs	r8, r5, r6
+   10e68:	0a0000f2 	beq	11238 <_init+0x6d4>
+   10e6c:	e1540009 	cmp	r4, r9

@@ -1,0 +1,300 @@
+=== Full disassembly around OSIK/DSA region 0x11900-0x11c00 ===
+
+/root/build/real_firmware_245/bli_tools/signature_checker:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00011900 <.text+0xb78>:
+   11900:	e1a01008 	mov	r1, r8
+   11904:	e28d0010 	add	r0, sp, #16
+   11908:	e58c3000 	str	r3, [ip]
+   1190c:	e59d5338 	ldr	r5, [sp, #824]	; 0x338
+   11910:	e59d733c 	ldr	r7, [sp, #828]	; 0x33c
+   11914:	ebfffce2 	bl	10ca4 <_init+0x140>
+   11918:	e3a02c01 	mov	r2, #256	; 0x100
+   1191c:	e28d1010 	add	r1, sp, #16
+   11920:	e1a00004 	mov	r0, r4
+   11924:	eb0000ca 	bl	11c54 <_init+0x10f0>
+   11928:	e3a02c01 	mov	r2, #256	; 0x100
+   1192c:	e1a03006 	mov	r3, r6
+   11930:	e3a01001 	mov	r1, #1
+   11934:	e28d0e11 	add	r0, sp, #272	; 0x110
+   11938:	ebfffcb2 	bl	10c08 <_init+0xa4>
+   1193c:	e3500c01 	cmp	r0, #256	; 0x100
+   11940:	e1a02000 	mov	r2, r0
+   11944:	159f3120 	ldrne	r3, [pc, #288]	; 11a6c <_init+0xf08>
+   11948:	159f012c 	ldrne	r0, [pc, #300]	; 11a7c <_init+0xf18>
+   1194c:	15931000 	ldrne	r1, [r3]
+   11950:	1affffc4 	bne	11868 <_init+0xd04>
+   11954:	e1a03006 	mov	r3, r6
+   11958:	e3a01001 	mov	r1, #1
+   1195c:	e28d0010 	add	r0, sp, #16
+   11960:	e0857007 	add	r7, r5, r7
+   11964:	ebfffca7 	bl	10c08 <_init+0xa4>
+   11968:	e2805f4d 	add	r5, r0, #308	; 0x134
+   1196c:	e3500000 	cmp	r0, #0
+   11970:	0a00000e 	beq	119b0 <_init+0xe4c>
+   11974:	e1a02000 	mov	r2, r0
+   11978:	e28d1010 	add	r1, sp, #16
+   1197c:	e1a00004 	mov	r0, r4
+   11980:	eb0000b3 	bl	11c54 <_init+0x10f0>
+   11984:	e1a03006 	mov	r3, r6
+   11988:	e3a02c01 	mov	r2, #256	; 0x100
+   1198c:	e3a01001 	mov	r1, #1
+   11990:	e28d0010 	add	r0, sp, #16
+   11994:	ebfffc9b 	bl	10c08 <_init+0xa4>
+   11998:	e0855000 	add	r5, r5, r0
+   1199c:	e3500000 	cmp	r0, #0
+   119a0:	11570005 	cmpne	r7, r5
+   119a4:	30870000 	addcc	r0, r7, r0
+   119a8:	30650000 	rsbcc	r0, r5, r0
+   119ac:	eaffffee 	b	1196c <_init+0xe08>
+   119b0:	e28d3d11 	add	r3, sp, #1088	; 0x440
+   119b4:	e28d4e9a 	add	r4, sp, #2464	; 0x9a0
+   119b8:	e2833008 	add	r3, r3, #8
+   119bc:	e2836004 	add	r6, r3, #4
+   119c0:	e2830044 	add	r0, r3, #68	; 0x44
+   119c4:	e1a01006 	mov	r1, r6
+   119c8:	eb000099 	bl	11c34 <_init+0x10d0>
+   119cc:	e28d0d16 	add	r0, sp, #1408	; 0x580
+   119d0:	e3003588 	movw	r3, #1416	; 0x588
+   119d4:	e1a02004 	mov	r2, r4
+   119d8:	e3a01001 	mov	r1, #1
+   119dc:	e280000c 	add	r0, r0, #12
+   119e0:	eb000071 	bl	11bac <_init+0x1048>
+   119e4:	e28d300c 	add	r3, sp, #12
+   119e8:	e3a02c01 	mov	r2, #256	; 0x100
+   119ec:	e58d3000 	str	r3, [sp]
+   119f0:	e28d1e11 	add	r1, sp, #272	; 0x110
+   119f4:	e28d3e21 	add	r3, sp, #528	; 0x210
+   119f8:	e1a00004 	mov	r0, r4
+   119fc:	eb000059 	bl	11b68 <_init+0x1004>
+   11a00:	e1a07000 	mov	r7, r0
+   11a04:	e1a00004 	mov	r0, r4
+   11a08:	eb000084 	bl	11c20 <_init+0x10bc>
+   11a0c:	e3570000 	cmp	r7, #0
+   11a10:	1a000002 	bne	11a20 <_init+0xebc>
+   11a14:	e59d200c 	ldr	r2, [sp, #12]
+   11a18:	e3520014 	cmp	r2, #20
+   11a1c:	0a000002 	beq	11a2c <_init+0xec8>
+   11a20:	e59d300c 	ldr	r3, [sp, #12]
+   11a24:	e59f2054 	ldr	r2, [pc, #84]	; 11a80 <_init+0xf1c>
+   11a28:	ea000006 	b	11a48 <_init+0xee4>
+   11a2c:	e28d1e21 	add	r1, sp, #528	; 0x210
+   11a30:	e1a00006 	mov	r0, r6
+   11a34:	ebfffc61 	bl	10bc0 <_init+0x5c>
+   11a38:	e3500000 	cmp	r0, #0
+   11a3c:	0a000006 	beq	11a5c <_init+0xef8>
+   11a40:	e59f203c 	ldr	r2, [pc, #60]	; 11a84 <_init+0xf20>
+   11a44:	e1a03005 	mov	r3, r5
+   11a48:	e59f001c 	ldr	r0, [pc, #28]	; 11a6c <_init+0xf08>
+   11a4c:	e3a01001 	mov	r1, #1
+   11a50:	e5900000 	ldr	r0, [r0]
+   11a54:	ebfffca1 	bl	10ce0 <_init+0x17c>
+   11a58:	e3a00001 	mov	r0, #1
+   11a5c:	e28ddef2 	add	sp, sp, #3872	; 0xf20
+   11a60:	e28dd008 	add	sp, sp, #8
+   11a64:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+   11a68:	00011f7f 	andeq	r1, r1, pc, ror pc
+   11a6c:	00023008 	andeq	r3, r2, r8
+   11a70:	00011f8e 	andeq	r1, r1, lr, lsl #31
+   11a74:	00011fac 	andeq	r1, r1, ip, lsr #31
+   11a78:	00011fcf 	andeq	r1, r1, pc, asr #31
+   11a7c:	00011feb 	andeq	r1, r1, fp, ror #31
+   11a80:	00012007 	andeq	r2, r1, r7
+   11a84:	0001203a 	andeq	r2, r1, sl, lsr r0
+   11a88:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+   11a8c:	e24ddf66 	sub	sp, sp, #408	; 0x198
+   11a90:	e1a08003 	mov	r8, r3
+   11a94:	e1a07001 	mov	r7, r1
+   11a98:	e1a06002 	mov	r6, r2
+   11a9c:	e1a04000 	mov	r4, r0
+   11aa0:	ebfffca9 	bl	10d4c <_init+0x1e8>
+   11aa4:	e1a05000 	mov	r5, r0
+   11aa8:	e28d0028 	add	r0, sp, #40	; 0x28
+   11aac:	ebfffc4f 	bl	10bf0 <_init+0x8c>
+   11ab0:	e59d21b0 	ldr	r2, [sp, #432]	; 0x1b0
+   11ab4:	e1a01008 	mov	r1, r8
+   11ab8:	e28d0028 	add	r0, sp, #40	; 0x28
+   11abc:	ebfffc96 	bl	10d1c <_init+0x1b8>
+   11ac0:	e28d1028 	add	r1, sp, #40	; 0x28
+   11ac4:	e28d0008 	add	r0, sp, #8
+   11ac8:	ebfffc8a 	bl	10cf8 <_init+0x194>
+   11acc:	e3a03003 	mov	r3, #3
+   11ad0:	e28d2098 	add	r2, sp, #152	; 0x98
+   11ad4:	e58d3000 	str	r3, [sp]
+   11ad8:	e1a01007 	mov	r1, r7
+   11adc:	e1a03004 	mov	r3, r4
+   11ae0:	e1a00006 	mov	r0, r6
+   11ae4:	ebfffc65 	bl	10c80 <_init+0x11c>
+   11ae8:	e3e03000 	mvn	r3, #0
+   11aec:	e1a02005 	mov	r2, r5
+   11af0:	e58d3000 	str	r3, [sp]
+   11af4:	e28d1008 	add	r1, sp, #8
+   11af8:	e28d3098 	add	r3, sp, #152	; 0x98
+   11afc:	e1a00004 	mov	r0, r4
+   11b00:	ebfffc8b 	bl	10d34 <_init+0x1d0>
+   11b04:	e28ddf66 	add	sp, sp, #408	; 0x198
+   11b08:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+   11b0c:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+   11b10:	e24dd094 	sub	sp, sp, #148	; 0x94
+   11b14:	e1a07003 	mov	r7, r3
+   11b18:	e1a06000 	mov	r6, r0
+   11b1c:	e28d0020 	add	r0, sp, #32
+   11b20:	e1a04001 	mov	r4, r1
+   11b24:	e1a05002 	mov	r5, r2
+   11b28:	ebfffc30 	bl	10bf0 <_init+0x8c>
+   11b2c:	e59d20a8 	ldr	r2, [sp, #168]	; 0xa8
+   11b30:	e1a01007 	mov	r1, r7
+   11b34:	e28d0020 	add	r0, sp, #32
+   11b38:	ebfffc77 	bl	10d1c <_init+0x1b8>
+   11b3c:	e28d1020 	add	r1, sp, #32
+   11b40:	e28d000c 	add	r0, sp, #12
+   11b44:	ebfffc6b 	bl	10cf8 <_init+0x194>
+   11b48:	e88d0060 	stm	sp, {r5, r6}
+   11b4c:	e1a03004 	mov	r3, r4
+   11b50:	e3a02014 	mov	r2, #20
+   11b54:	e28d100c 	add	r1, sp, #12
+   11b58:	e3a00000 	mov	r0, #0
+   11b5c:	ebfffc77 	bl	10d40 <_init+0x1dc>
+   11b60:	e28dd094 	add	sp, sp, #148	; 0x94
+   11b64:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+   11b68:	e1a0c000 	mov	ip, r0
+   11b6c:	e92d4007 	push	{r0, r1, r2, lr}
+   11b70:	e1a00002 	mov	r0, r2
+   11b74:	e59c2000 	ldr	r2, [ip]
+   11b78:	e3520000 	cmp	r2, #0
+   11b7c:	03e00000 	mvneq	r0, #0
+   11b80:	0a000007 	beq	11ba4 <_init+0x1040>
+   11b84:	e1a02003 	mov	r2, r3
+   11b88:	e3a03001 	mov	r3, #1
+   11b8c:	e58d3000 	str	r3, [sp]
+   11b90:	e59c3004 	ldr	r3, [ip, #4]
+   11b94:	ebfffc39 	bl	10c80 <_init+0x11c>
+   11b98:	e59d3010 	ldr	r3, [sp, #16]
+   11b9c:	e5830000 	str	r0, [r3]
+   11ba0:	e3a00000 	mov	r0, #0
+   11ba4:	e28dd00c 	add	sp, sp, #12
+   11ba8:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+   11bac:	e3530007 	cmp	r3, #7
+   11bb0:	9a000016 	bls	11c10 <_init+0x10ac>
+   11bb4:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+   11bb8:	e1a05001 	mov	r5, r1
+   11bbc:	e1a04002 	mov	r4, r2
+   11bc0:	e1a06000 	mov	r6, r0
+   11bc4:	ebfffc3f 	bl	10cc8 <_init+0x164>
+   11bc8:	e3550001 	cmp	r5, #1
+   11bcc:	e1a07000 	mov	r7, r0
+   11bd0:	e5840004 	str	r0, [r4, #4]
+   11bd4:	1a00000f 	bne	11c18 <_init+0x10b4>
+   11bd8:	e5902010 	ldr	r2, [r0, #16]
+   11bdc:	e3a01c01 	mov	r1, #256	; 0x100
+   11be0:	e2860004 	add	r0, r6, #4
+   11be4:	ebfffbf8 	bl	10bcc <_init+0x68>
+   11be8:	e5870010 	str	r0, [r7, #16]
+   11bec:	e3a01c01 	mov	r1, #256	; 0x100
+   11bf0:	e5947004 	ldr	r7, [r4, #4]
+   11bf4:	e2860f41 	add	r0, r6, #260	; 0x104
+   11bf8:	e5972014 	ldr	r2, [r7, #20]
+   11bfc:	ebfffbf2 	bl	10bcc <_init+0x68>
+
+=== All strings in .rodata ===
+
+String dump of section '.rodata':
+  [     8]  opening key file for reading
+  [    25]  reading from key file
+  [    3b]  %s 
+  [    3f]  %02X
+  [    44]  Usage: %s [-r|-c] [mtd device name of bank] [size of bank] [signature file (only needed in checking mode)]
+
+  [    b0]         %s {-k [KEY]} -b {BLI}
+
+  [    cf]         %s -h
+
+  [    dd]  Tool to identify and check the RSA or DSA signature of a build.
+  [   11e]  -h	display help
+  [   12f]  -r	retrieve signature from Infoblocks in flash
+  [   15f]  -c 	check signature of build in flash against the signature in the given file
+  [   1ae]  -b [FILE]	verify the signature of a given BLI/RBI (otherwise stdin)
+  [   1f3]  -k [FILE]	key (otherwise /proc/rip/0120)
+  [   21c]  Error calculating signature
+
+  [   239]  Out of memory
+
+  [   248]  Error reading from input
+
+  [   262]  Signature incorrect
+
+  [   277]  /proc/rip/0116
+  [   286]  opening rsa key file error 
+
+  [   2a4]  reading from rsa key file error 
+
+  [   2c7]  Error reading from input.
+
+  [   2e3]  Error reading from input 
+
+  [   2ff]  unseal bli signature failed,unsealed_rsa_len=%d 
+
+  [   332]  bli signature check failedm,tempFileSize=%d 
+
+  [   361]  /proc/rip/0120
+  [   370]  /proc/rip/0101
+  [   37f]  /proc/rip/0100
+  [   38e]  hcrbk:
+  [   395]  opening mtd file for reading
+  [   3b2]  mmap
+  [   3b7]  DSAS
+  [   3bc]  RSAS
+  [   3c1]  Unknown header 0x%08x
+
+  [   3d8]  Error importing DSA key from rip: %s
+
+  [   3fe]  opening signature file
+  [   415]  fstat
+  [   41b]  reading from signature file
+  [   437]  Error reading signature file %s
+
+  [   458]  Signature of build in flash matches given signature.
+  [   48d]  munmap
+  [   494]  OSIK or user supplied key file '%s' doesn't exist 
+
+  [   4c9]  RSA key exists 
+
+  [   4db]  both OSIK key and RSA key don't exist; exit(1) 
+
+  [   50d]  r
+  [   50f]  Could not open %s
+
+  [   522]  Error mmapping %s
+
+  [   535]  Signature of build in flash does not match given signature!
+
+
+=== Search for OSIK-related strings in whole binary ===
+  [   458]  Signature of build in flash matches given signature.
+  [   48d]  munmap
+  [   494]  OSIK or user supplied key file '%s' doesn't exist 
+
+  [   4c9]  RSA key exists 
+
+  [   4db]  both OSIK key and RSA key don't exist; exit(1) 
+
+  [   50d]  r
+   219c OSIK or user supplied key file '%s' doesn't exist 
+   21e3 both OSIK key and RSA key don't exist; exit(1) 
+
+=== Search for /proc/rip paths ===
+   1efa 	-k [FILE]	key (otherwise /proc/rip/0120)
+   1f7f /proc/rip/0116
+   2069 /proc/rip/0120
+   2078 /proc/rip/0101
+   2087 /proc/rip/0100
+
+=== Search for any /etc or key-like paths ===
+   1efa 	-k [FILE]	key (otherwise /proc/rip/0120)
+   1f7f /proc/rip/0116
+   2069 /proc/rip/0120
+   2078 /proc/rip/0101
+   2087 /proc/rip/0100

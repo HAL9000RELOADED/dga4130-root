@@ -1,0 +1,23 @@
+
+/root/build/real_firmware_245/bli_tools/bli_parser:     file format elf32-littlearm
+
+DYNAMIC RELOCATION RECORDS
+OFFSET   TYPE              VALUE 
+00020ffc R_ARM_GLOB_DAT    __gmon_start__
+00021008 R_ARM_COPY        stdin
+00020fc4 R_ARM_JUMP_SLOT   fopen
+00020fc8 R_ARM_JUMP_SLOT   free
+00020fcc R_ARM_JUMP_SLOT   fread
+00020fd0 R_ARM_JUMP_SLOT   puts
+00020fd4 R_ARM_JUMP_SLOT   malloc
+00020fd8 R_ARM_JUMP_SLOT   __libc_start_main
+00020fdc R_ARM_JUMP_SLOT   __gmon_start__
+00020fe0 R_ARM_JUMP_SLOT   exit
+00020fe4 R_ARM_JUMP_SLOT   getopt
+00020fe8 R_ARM_JUMP_SLOT   setvbuf
+00020fec R_ARM_JUMP_SLOT   putchar
+00020ff0 R_ARM_JUMP_SLOT   __printf_chk
+00020ff4 R_ARM_JUMP_SLOT   fclose
+00020ff8 R_ARM_JUMP_SLOT   abort
+
+
